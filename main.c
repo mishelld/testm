@@ -5,8 +5,10 @@
 #define TRUE 1
 #define FALSE 0
 
-const int abc[26] = "abcdefghijklmnopqrstuwxyz";
-const int abd[26] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const int abc[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 
+                     's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+
+
 
 void insertWord(char word[WORD]){
     int count = 0;
@@ -33,7 +35,6 @@ void insertText(char text[TXT]){
 }
 
 int gematria(char c){
-
     for(int i = 0 ; i < 26; i++){
         if(c == abc[i] || c == abc[i] - 32){ // For example: a = 97 - 32 -> A = 65 
             return i + 1;
@@ -44,20 +45,26 @@ int gematria(char c){
 
 void gematriaSequences(char word[WORD], char text[TXT]){
     printf("Gematria Sequences: ");
-    int sum = 0;
+    //*find the sum of the word in geo;
+    int temp = 0;
     int i = 0;
-    while(word[i] != '\0'){
-        sum += gematria(word[i]);
-        i++;
+    for(int i;word[i] != '\0';i++){
+        temp = temp + gematria(word[i]);
     }
-    int need = sum;
+    int need = temp;
+    //*
     int firstPrint = TRUE;
-    for(int i = 0; text[i] != '\0'; i++){
+    //we will use for loop to go throughout all the text
+    int i = 0;
+    while(text[i] != '\0'){
+        //if the geo of the char in the given index i is positive
         if(gematria(text[i]) > 0){
             int sum = 0;
             int keep = TRUE;
-            for(int j = i; keep; j++){
-                sum += gematria(text[j]);
+            //we will use another loop
+            int j = i; 
+            while(keep){
+                sum = sum + gematria(text[j]);
                 if(sum == need){
                     if(!firstPrint){
                         printf("~");
@@ -73,8 +80,10 @@ void gematriaSequences(char word[WORD], char text[TXT]){
                     keep = FALSE;
                 }
             }
+             j++;
         }
     }
+    i++;
     printf("\n");
 }
 
