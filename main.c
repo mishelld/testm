@@ -208,6 +208,7 @@ void AnagramSequences(char word[WORD], char text[TXT]){
             strcpy(copy, word);
             for(int j = i; keep && text[j] != '\0' ; j++){
                 if(text[j] != ' '){
+                    //past
                     int k = -1;
                     for(int f = 0; copy[f] != '\0'; f++){
                     if(copy[f] == text[j]){
@@ -221,7 +222,13 @@ void AnagramSequences(char word[WORD], char text[TXT]){
                         keep = FALSE;
                     }
                 }
-                if(isEmpty(copy)){
+                 int notf = 1;
+                for(int i = 0; copy[i] != '\0'; i++){
+               if(copy[i] != -1){
+                   notf=0;
+               }   
+                }
+                if(notf){
                     if(!firstPrint){
                         printf("~");
                     }
