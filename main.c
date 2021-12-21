@@ -53,7 +53,13 @@ int gematriaOfWord(char word[WORD]){
 
 void gematriaSequences(char word[WORD], char text[TXT]){
     printf("Gematria Sequences: ");
-    int need = gematriaOfWord(word);
+    int sum = 0;
+    int i = 0;
+    while(word[i] != '\0'){
+        sum += gematria(word[i]);
+        i++;
+    }
+    int need = sum;
     int firstPrint = TRUE;
     for(int i = 0; text[i] != '\0'; i++){
         if(gematria(text[i]) > 0){
