@@ -120,11 +120,15 @@ void gematriaSequences(char word[WORD],char text[TXT])
 
 void reverse(char from[WORD], char to[WORD]){
     int count = 0;
-    for(int i = 0; from[i] != '\0'; i++){
+    int i = 0;
+    while( from[i] != '\0'){
         count++;
+        i++;
     }
-    for(int j = 0; j < count; j++){
+    int j = 0;
+    while( j < count){
         to[j] = from[count - j - 1];
+        j++;
     }
     to[count] = '\0';
 }
