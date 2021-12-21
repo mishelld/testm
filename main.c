@@ -100,7 +100,7 @@ void p(int pr, int j,int i){
                     printf("%c", txt[k]);
                 }
 }*/
-int g(char word[WORD])
+/*int g(char word[WORD])
 {
     int wordGematria = 0;
     int i = 0;
@@ -160,6 +160,65 @@ void gematriaSequences(char word[WORD],char text[TXT])
             }
         }
         
+    }
+}*/
+int g(char word[WORD])
+{
+    int wordGematria = 0;
+    int i = 0;
+    while (word[i] != '\0')
+    {
+        if (word[i] >= 'a' && word[i] <= 'z')
+        {
+            wordGematria += word[i] - 'a' + 1;
+        }
+        else if (word[i] >= 'A' && word[i] <= 'Z')
+        {
+            wordGematria += word[i] - 'A' + 1;
+        }
+        ++i;
+    }
+    return wordGematria;
+}
+
+void gematriaSequences(char word[WORD],char text[TXT])
+{
+    int wordGematria = g(word);
+    int isPrint = 0;
+    int i = 0;
+    while (text[i] != '\0')
+    {
+        int sum = 0;
+        int j = i;
+        if ((text[i] >= 'a' && text[i] <= 'z') || (text[i] >= 'A' && text[i] <= 'Z'))
+        {
+            while (text[j] != '\0' && sum < wordGematria)
+            {
+                if (text[j] >= 'a' && text[j] <= 'z')
+                {
+                    sum += text[j] - 'a' + 1;
+                }
+                else if (text[j] >= 'A' && text[j] <= 'Z')
+                {
+                    sum += text[j] - 'A' + 1;
+                }
+                ++j;
+            }
+            --j;
+            if (sum == wordGematria)
+            {
+                if (isPrint)
+                {
+                    printf("~");
+                }
+                for (int k = i; k <= j; k++)
+                {
+                    printf("%c", text[k]);
+                }
+                ++isPrint;
+            }
+        }
+        ++i;
     }
 }
 
@@ -303,6 +362,7 @@ int main(){
     insertText(text);
     printf("Gematria Sequences: ");
     gematriaSequences(word,text);
+    printf("\n");
     printf("Atbash Sequences: ");
     AtbashSequences(word, text);
     printf("Anagram Sequences: ");
