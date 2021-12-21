@@ -129,20 +129,7 @@ void reverse(char from[WORD], char to[WORD]){
     to[count] = '\0';
 }
 
-//done
-void atbash(char from[WORD], char to[WORD]){
-    int i = 0;
-    for(int j = 0; from[j] != '\0'; j++){
-        int place = gematria(from[j]) - 1;
-        if(abc[place] != from[j]){
-            to[j] = abc[26 - 1 - place] - 32;
-        }else{
-            to[j] = abc[26 - 1 - place];
-        }
-        i++;
-    }
-    to[i] = '\0';
-}
+
 void ash(char word[WORD]){
      strcpy(a, word);
     int f=0;
