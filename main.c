@@ -1,9 +1,13 @@
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
 
 #define TXT 1024
 #define WORD 30
 #define TRUE 1
 #define FALSE 0
+
 
 const int abc[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 
                      's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
@@ -43,7 +47,7 @@ int gematria(char c){
     return 0;
 }
 
-void gematriaSequences(char word[WORD], char text[TXT]){
+/*void gematriaSequences(char word[WORD], char text[TXT]){
     printf("Gematria Sequences: ");
     int sum = 0;
     //past
@@ -52,9 +56,8 @@ void gematriaSequences(char word[WORD], char text[TXT]){
     }
     int need = sum;
     int firstPrint = TRUE;
-    int i = 0;
-    while(text[i] != '\0')
-    {
+    //not past
+    for(int i = 0; text[i] != '\0'; i++){
         if(gematria(text[i]) > 0){
             int sum = 0;
             int keep = TRUE;
@@ -77,8 +80,58 @@ void gematriaSequences(char word[WORD], char text[TXT]){
             }
         }
     }
-    ++i;
     printf("\n");
+}*/
+void p(int pr, int j,int i,char text[TXT]){
+     if (pr)
+                {
+                    printf("~");
+                }
+                for (int k = i; k <= j; k++)
+                {
+                    printf("%c", text[k]);
+                }
+}
+
+void gematriaSequences(char word[WORD],char text[TXT])
+{
+    printf("Gematria Sequences: ");
+    int sum = 0;
+    //past
+    for(int i =0;word[i] != '\0';i++){
+        sum += gematria(word[i]);
+    }
+    int wordGematria = sum;
+    int pr = 0;
+    for (int w = 0;text[w] != '\0';w++)
+    {
+        int u = 0;
+        int l = w;
+        if (isalpha(text[w]))
+        {
+            while (text[l] != '\0' && u < wordGematria)
+            { //lower case
+               if (text[l] >= 97 && text[l] <= 122)
+                {
+                    u = u +  text[l] - 97 + 1;
+                }
+                //upper case
+                else if (isupper(text[l]))
+                {
+                    u = u + text[l] - 65 + 1;
+                }
+               ++l;
+            }
+            --l;
+            //print the sequances we fuond as equal gimatrcli
+            if (u == wordGematria)
+            {
+                p(pr,l,w,text);
+                ++pr;
+            }
+        }
+        
+    }
 }
 
 void reverse(char from[WORD], char to[WORD]){
@@ -228,7 +281,7 @@ int main(){
     char text[TXT];
     insertWord(word);
     insertText(text);
-    gematriaSequences(word, text);
+    gematriaSequences(word,text);
     AtbashSequences(word, text);
     AnagramSequences(word, text);
     return 0;
