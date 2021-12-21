@@ -76,7 +76,6 @@ for(int i = 0; text[i] != '\0'; i++){
 }
 
 void gematriaSequences(char word[WORD], char text[TXT]){
-    printf("Gematria Sequences: ");
     int sum = 0;
     //past
     for(int i =0;word[i] != '\0';i++){
@@ -115,7 +114,6 @@ void atbash(char from[WORD], char to[WORD]){
 }
 
 void AtbashSequences(char word[WORD], char text[TXT]){
-    printf("Atbash Sequences: ");
     char atbashWord[WORD];
     atbash(word, atbashWord);
     char reversedAtbash[WORD];
@@ -196,14 +194,17 @@ int isEmpty(char arr[WORD]){
     return TRUE;
 }
 
+void t(){
+    
+}
+
 void AnagramSequences(char word[WORD], char text[TXT]){
-    printf("Anagram Sequences: ");
     char copy[WORD];
     int firstPrint = TRUE;
     for(int i = 0; text[i] != '\0'; i++){
         if(text[i] != ' '){
             int keep = TRUE;
-            //copyWord(word, copy);
+            //past
             strcpy(copy, word);
             for(int j = i; keep && text[j] != '\0' ; j++){
                 if(text[j] != ' '){
@@ -237,8 +238,11 @@ int main(){
     char text[TXT];
     insertWord(word);
     insertText(text);
+    printf("Gematria Sequences: ");
     gematriaSequences(word,text);
+    printf("Atbash Sequences: ");
     AtbashSequences(word, text);
+    printf("Anagram Sequences: ");
     AnagramSequences(word, text);
     return 0;
 }
