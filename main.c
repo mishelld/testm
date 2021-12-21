@@ -8,12 +8,8 @@
 
 char copy[WORD];
 
-
-
 const int abc[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 
                      's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-
-
 
 void insertWord(char word[WORD]){
     int count = 0;
@@ -342,7 +338,11 @@ void AnagramSequences(char word[WORD], char text[TXT]){
                         keep = 0;
                     }
                 }
-                if(isEmpty(copy)){
+                int e = 1;
+                for(int i = 0; copy[i] != '\0'; i++){
+                if(copy[i] != -1) e= 0;
+                  }
+                if(e==1){
                     if(!firstPrint){
                         printf("~");
                     }
