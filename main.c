@@ -197,7 +197,7 @@ void gematriaSequences(char word[WORD],char text[TXT])
     int wordGematria = g(word);
     int isPrint = 0;
     int i = 0;
-    while (text[i] != '\0')
+    for (int i = 0;text[i] != '\0';i++)
     {
         int sum = 0;
         int j = i;
@@ -205,11 +205,11 @@ void gematriaSequences(char word[WORD],char text[TXT])
         {
             while (text[j] != '\0' && sum < wordGematria)
             {
-                if (isalpha(text[j]) && !(isupper(text[j])))
+                if (text[j] >= 97 && text[j] <= 122)
                 {
                     sum += text[j] - 97 + 1;
                 }
-                else if (isalpha(text[j]) && isupper(text[j]))
+                else if (text[j] >= 65 && text[j] <= 90)
                 {
                     sum += text[j] - 65 + 1;
                 }
@@ -222,7 +222,7 @@ void gematriaSequences(char word[WORD],char text[TXT])
                 ++isPrint;
             }
         }
-        ++i;
+       
     }
 }
 
