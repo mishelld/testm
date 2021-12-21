@@ -77,7 +77,7 @@ void gematriaSequences(char word[WORD], char text[TXT]){
             }
         }
     }
-    i++;
+    ++i;
     printf("\n");
 }
 
