@@ -36,7 +36,7 @@ void insertText(char text[TXT]){
 
 int gematria(char c){
     for(int i = 0 ; i < 26; i++){
-        if(c == abc[i] || c == abc[i] - 32){ // For example: a = 97 - 32 -> A = 65 
+        if(c == abc[i] || c == abc[i] - 32){ 
             return i + 1;
         }
     }
@@ -46,10 +46,8 @@ int gematria(char c){
 void gematriaSequences(char word[WORD], char text[TXT]){
     printf("Gematria Sequences: ");
     int sum = 0;
-    int i = 0;
-    while(word[i] != '\0'){
+    for(int i =0;word[i] != '\0';i++){
         sum += gematria(word[i]);
-        i++;
     }
     int need = sum;
     int firstPrint = TRUE;
