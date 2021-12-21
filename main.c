@@ -8,6 +8,8 @@
 const int abc[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 
                      's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
+
+
 void insertWord(char word[WORD]){
     int count = 0;
     char input;
@@ -53,15 +55,13 @@ void gematriaSequences(char word[WORD], char text[TXT]){
     //*
     int firstPrint = TRUE;
     //we will use for loop to go throughout all the text
-    int i = 0;
-    while(text[i] != '\0'){
+    for(int i = 0; text[i] != '\0'; i++){
         //if the geo of the char in the given index i is positive
         if(gematria(text[i]) > 0){
             int sum = 0;
             int keep = TRUE;
-            //we will use another loop
-            int j = i; 
-            while(keep){
+            //we will
+            for(int j = i; keep; j++){
                 sum = sum + gematria(text[j]);
                 if(sum == need){
                     if(!firstPrint){
@@ -78,10 +78,8 @@ void gematriaSequences(char word[WORD], char text[TXT]){
                     keep = FALSE;
                 }
             }
-             j++;
         }
     }
-    i++;
     printf("\n");
 }
 
