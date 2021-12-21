@@ -7,9 +7,27 @@
 #define WORD 30
 
 char copy[WORD];
+char a[WORD];
+char atbashWord[WORD];
+char reversedAtbash[WORD];
 
 const int abc[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 
                      's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+
+
+const int abd[26] = {'z', 'y', 'x', 'w', 'v', 'u', 't', 's', 'r', 'q', 'p', 'o', 'n', 'm', 'l', 'k', 'j', 'i', 
+            'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a'};
+
+int ab(char c){
+   for(int i=0;i<26;i++){
+       if(c==abc[i]){
+           return abd[i];
+       }
+   }         
+
+return -1;
+
+}              
 
 void insertWord(char word[WORD]){
     int count = 0;
@@ -43,6 +61,8 @@ int gematria(char c){
     }
     return 0;
 }
+   
+
 
 
 /*void f(int firstPrint ,int need,char text[TXT]){
@@ -223,6 +243,7 @@ void reverse(char from[WORD], char to[WORD]){
     to[count] = '\0';
 }
 
+//done
 void atbash(char from[WORD], char to[WORD]){
     int i = 0;
     for(int j = 0; from[j] != '\0'; j++){
@@ -236,13 +257,15 @@ void atbash(char from[WORD], char to[WORD]){
     }
     to[i] = '\0';
 }
-
-void AtbashSequences(char word[WORD], char text[TXT]){
-    char atbashWord[WORD];
-    atbash(word, atbashWord);
-    char reversedAtbash[WORD];
-    reverse(atbashWord, reversedAtbash);
-    int firstPrint = 1;
+void ash(char word[WORD]){
+     strcpy(a, word);
+    int f=0;
+    while(a[f] != '\0'){
+        a[f] = ab(a[f]);/*  */
+        f++;
+    }
+}
+void h (char word[WORD], char text[WORD],int firstPrint){
     for(int i = 0; text[i] != '\0'; i++){
         if(text[i] != ' '){
             int keep1 = 1;
@@ -291,6 +314,13 @@ void AtbashSequences(char word[WORD], char text[TXT]){
             }
         }
     }
+}
+void AtbashSequences(char word[WORD], char text[TXT]){
+    
+     atbash(word, atbashWord);
+    reverse(atbashWord, reversedAtbash);
+    int firstPrint = 1;
+    h (word, text,firstPrint);
     printf("\n");
 
 }
@@ -357,6 +387,7 @@ void AnagramSequences(char word[WORD], char text[TXT]){
                     int g = i;
                     while(g <= j){
                         printf("%c", text[g]);
+
                     g++;
                     }
                     keep = 0;
@@ -367,11 +398,66 @@ void AnagramSequences(char word[WORD], char text[TXT]){
     }
 }
 
+
+
+void o(char word[WORD], char text[TXT]){
+    int firstPrint = 1;
+    int i = 0;
+    //passed
+    while(text[i] != '\0'){
+        if(text[i] != ' '){
+            int keep = 1;
+            //past
+            ash(word);
+            for(int j = i; keep && text[j] != '\0' ; j++){
+                if(text[j] != ' '){
+                    //past
+                    int k = -1;
+                    int f = 0;
+                    //passed
+                    while(a[f] != '\0'){
+                    if(a[f] == text[j]){
+                     k=f;
+                    }
+                    f++;
+                    }
+                    if(k != -1){
+                        a[k] = -1;
+                    }
+                    else{
+                        keep = 0;
+                    }
+                }
+                if(isEmpty(a)){
+                    if(!firstPrint){
+                        printf("~");
+                    }
+                    else{
+                        firstPrint = 0;
+                    }
+                   // passed
+                    int g = i;
+                    while(g <= j){
+                        printf("%c",text[g]);
+
+                    g++;
+                    }
+                    keep = 0;
+                }
+            }
+        }
+         i++;
+    }
+
+}
+
+
 int main(){
     char word[WORD];
     char text[TXT];
     insertWord(word);
     insertText(text);
+    //ash(word);
     printf("Gematria Sequences: ");
     gematriaSequences(word,text);
     printf("\n");
@@ -379,5 +465,10 @@ int main(){
     AtbashSequences(word, text);
     printf("Anagram Sequences: ");
     AnagramSequences(word, text);
+   // printf("\n");
+   // printf("test: ");
+   // o(word, text);
+
+
     return 0;
 }
