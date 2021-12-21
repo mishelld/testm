@@ -208,7 +208,12 @@ void AnagramSequences(char word[WORD], char text[TXT]){
             strcpy(copy, word);
             for(int j = i; keep && text[j] != '\0' ; j++){
                 if(text[j] != ' '){
-                    int k = isContains(copy, text[j]);
+                    int k = -1;
+                    for(int f = 0; copy[f] != '\0'; f++){
+                    if(copy[f] == text[j]){
+                     k=f;
+                    }
+                    }
                     if(k != -1){
                         copy[k] = -1;
                     }
