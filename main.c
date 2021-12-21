@@ -165,10 +165,7 @@ void h (char word[WORD], char text[WORD],int firstPrint){
     int i = 0;
     while(text[i] != '\0'){
         if(text[i] != ' '){
-            int keep1 = 1;
-            int keep2 = 1;
-            int skip = 0;
-            int j = 0;
+            int keep1 = 1,keep2 = 1,skip = 0,j = 0;
             while(keep1 || keep2){
                 if(text[i + j] != ' '){
                       if(keep1){
@@ -214,7 +211,7 @@ void h (char word[WORD], char text[WORD],int firstPrint){
                 }
                 j++;
             }
-        }//
+        }
         i++;
     }
     
