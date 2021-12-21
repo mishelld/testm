@@ -326,10 +326,12 @@ void AnagramSequences(char word[WORD], char text[TXT]){
                 if(text[j] != ' '){
                     //past
                     int k = -1;
-                    for(int f = 0; copy[f] != '\0'; f++){
+                    int f = 0;
+                    while(copy[f] != '\0'){
                     if(copy[f] == text[j]){
                      k=f;
                     }
+                    f++;
                     }
                     if(k != -1){
                         copy[k] = -1;
@@ -345,6 +347,7 @@ void AnagramSequences(char word[WORD], char text[TXT]){
                     else{
                         firstPrint = 0;
                     }
+                   // passed
                     int g = i;
                     while(g <= j){
                         printf("%c", text[g]);
