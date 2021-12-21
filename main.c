@@ -194,7 +194,13 @@ void p(int isPrint, int j,int i,char text[TXT]){
 
 void gematriaSequences(char word[WORD],char text[TXT])
 {
-    int wordGematria = g(word);
+    int sum = 0;
+    //past
+    for(int i =0;word[i] != '\0';i++){
+        sum += gematria(word[i]);
+    }
+    //int need = sum;
+    int wordGematria = sum;
     int isPrint = 0;
     int i = 0;
     for (int i = 0;text[i] != '\0';i++)
