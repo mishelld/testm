@@ -47,12 +47,13 @@ int gematria(char c){
     return 0;
 }
 
+
 void f(int firstPrint ,int need,char text[TXT]){
 for(int i = 0; text[i] != '\0'; i++){
         if(gematria(text[i]) > 0){
             int sum = 0;
             int keep = TRUE;
-            for(int j = i; keep; j++){
+          for(int j = i; keep; j++){
                 sum += gematria(text[j]);
                 if(sum == need){
                     if(!firstPrint){
@@ -70,6 +71,7 @@ for(int i = 0; text[i] != '\0'; i++){
                 }
             }
         }
+            
     }
 }
 
@@ -82,61 +84,10 @@ void gematriaSequences(char word[WORD], char text[TXT]){
     }
     int need = sum;
     int firstPrint = TRUE;
-    //not past
+    //past
     f(firstPrint ,need,text);
     printf("\n");
 }
-/*void p(int pr, int j,int i,char text[TXT]){
-     if (pr)
-                {
-                    printf("~");
-                }
-                for (int k = i; k <= j; k++)
-                {
-                    printf("%c", text[k]);
-                }
-}
-
-void gematriaSequences(char word[WORD],char text[TXT])
-{
-    printf("Gematria Sequences: ");
-    int sum = 0;
-    //past
-    for(int i =0;word[i] != '\0';i++){
-        sum += gematria(word[i]);
-    }
-    int wordGematria = sum;
-    int pr = 0;
-    for (int w = 0;text[w] != '\0';w++)
-    {
-        int u = 0;
-        int l = w;
-        if (isalpha(text[w]))
-        {
-            while (text[l] != '\0' && u < wordGematria)
-            { //lower case
-               if (text[l] >= 97 && text[l] <= 122)
-                {
-                    u = u +  text[l] - 97 + 1;
-                }
-                //upper case
-                else if (isupper(text[l]))
-                {
-                    u = u + text[l] - 65 + 1;
-                }
-               ++l;
-            }
-            --l;
-            //print the sequances we fuond as equal gimatrcli
-            if (u == wordGematria)
-            {
-                p(pr,l,w,text);
-                ++pr;
-            }
-        }
-        
-    }
-}*/
 
 void reverse(char from[WORD], char to[WORD]){
     int count = 0;
@@ -252,7 +203,8 @@ void AnagramSequences(char word[WORD], char text[TXT]){
     for(int i = 0; text[i] != '\0'; i++){
         if(text[i] != ' '){
             int keep = TRUE;
-            copyWord(word, copy);
+            //copyWord(word, copy);
+            strcpy(copy, word);
             for(int j = i; keep && text[j] != '\0' ; j++){
                 if(text[j] != ' '){
                     int k = isContains(copy, text[j]);
