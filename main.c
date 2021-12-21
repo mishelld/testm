@@ -47,17 +47,8 @@ int gematria(char c){
     return 0;
 }
 
-/*void gematriaSequences(char word[WORD], char text[TXT]){
-    printf("Gematria Sequences: ");
-    int sum = 0;
-    //past
-    for(int i =0;word[i] != '\0';i++){
-        sum += gematria(word[i]);
-    }
-    int need = sum;
-    int firstPrint = TRUE;
-    //not past
-    for(int i = 0; text[i] != '\0'; i++){
+void f(int firstPrint ,int need,char text[TXT]){
+for(int i = 0; text[i] != '\0'; i++){
         if(gematria(text[i]) > 0){
             int sum = 0;
             int keep = TRUE;
@@ -80,9 +71,22 @@ int gematria(char c){
             }
         }
     }
+}
+
+void gematriaSequences(char word[WORD], char text[TXT]){
+    printf("Gematria Sequences: ");
+    int sum = 0;
+    //past
+    for(int i =0;word[i] != '\0';i++){
+        sum += gematria(word[i]);
+    }
+    int need = sum;
+    int firstPrint = TRUE;
+    //not past
+    f(firstPrint ,need,text);
     printf("\n");
-}*/
-void p(int pr, int j,int i,char text[TXT]){
+}
+/*void p(int pr, int j,int i,char text[TXT]){
      if (pr)
                 {
                     printf("~");
@@ -132,7 +136,7 @@ void gematriaSequences(char word[WORD],char text[TXT])
         }
         
     }
-}
+}*/
 
 void reverse(char from[WORD], char to[WORD]){
     int count = 0;
