@@ -45,24 +45,20 @@ int gematria(char c){
 
 void gematriaSequences(char word[WORD], char text[TXT]){
     printf("Gematria Sequences: ");
-    //*find the sum of the word in geo;
-    int temp = 0;
+    int sum = 0;
     int i = 0;
-    for(int i;word[i] != '\0';i++){
-        temp = temp + gematria(word[i]);
+    while(word[i] != '\0'){
+        sum += gematria(word[i]);
+        i++;
     }
-    int need = temp;
-    //*
+    int need = sum;
     int firstPrint = TRUE;
-    //we will use for loop to go throughout all the text
     for(int i = 0; text[i] != '\0'; i++){
-        //if the geo of the char in the given index i is positive
         if(gematria(text[i]) > 0){
             int sum = 0;
             int keep = TRUE;
-            //we will
             for(int j = i; keep; j++){
-                sum = sum + gematria(text[j]);
+                sum += gematria(text[j]);
                 if(sum == need){
                     if(!firstPrint){
                         printf("~");
