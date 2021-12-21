@@ -6,6 +6,8 @@
 #define TXT 1024
 #define WORD 30
 
+
+
 char copy[WORD];
 char a[WORD];
 char atbashWord[WORD];
@@ -145,21 +147,12 @@ void ash(char word[WORD]){
      strcpy(a, word);
     int f=0;
     while(a[f] != '\0'){
-        a[f] = ab(a[f]);/*  */
+        a[f] = ab(a[f]);
         f++;
     }
 }
-void h (char word[WORD], char text[WORD],int firstPrint){
-    int i = 0;
-    while(text[i] != '\0'){
-        if(text[i] != ' '){
-            int keep1 = 1;
-            int keep2 = 1;
-            int skip = 0;
-            int j = 0;
-            while( keep1 || keep2){
-                if(text[i + j] != ' '){
-                    if(keep1){
+void q(int keep1,int skip,int i,int j,char text[WORD],int firstPrint){
+    if(keep1){
                         if(atbashWord[j - skip] == '\0'){
                             if(!firstPrint){
                                 printf("~");
@@ -176,6 +169,38 @@ void h (char word[WORD], char text[WORD],int firstPrint){
                             keep1 = 0;
                         }
                         else if(text[i + j] != atbashWord[j - skip]){
+                            keep1 = 0;
+                        }
+                    }
+    
+}
+void h (char word[WORD], char text[WORD],int firstPrint){
+    int i = 0;
+    while(text[i] != '\0'){
+        if(text[i] != ' '){
+            int keep1 = 1;
+            int keep2 = 1;
+            int skip = 0;
+            int j = 0;
+            while(keep1 || keep2){
+                if(text[i + j] != ' '){
+                      if(keep1){
+                        if(a[j - skip] == '\0'){
+                            if(!firstPrint){
+                                printf("~");
+                            }
+                            else{
+                                firstPrint = 0;
+                            }
+                            int g = i;
+                            while(g <= i + j - 1){
+                                printf("%c", text[g]);
+                                g++;
+                            }
+                            
+                            keep1 = 0;
+                        }
+                        else if(text[i + j] != a[j - skip]){
                             keep1 = 0;
                         }
                     }
@@ -202,17 +227,16 @@ void h (char word[WORD], char text[WORD],int firstPrint){
                 }
                 j++;
             }
-        }
+        }//
         i++;
     }
     
 }
 void AtbashSequences(char word[WORD], char text[TXT]){
-    
-     atbash(word, atbashWord);
-    reverse(atbashWord, reversedAtbash);
+     ash(word);
+    reverse(a, reversedAtbash);
     int firstPrint = 1;
-    h (word, text,firstPrint);
+    h(word, text,firstPrint);
     printf("\n");
 
 }
