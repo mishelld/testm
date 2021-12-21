@@ -205,11 +205,11 @@ void gematriaSequences(char word[WORD],char text[TXT])
         {
             while (text[j] != '\0' && sum < wordGematria)
             {
-                if (text[j] >= 97 && text[j] <= 122)
+                if (isalpha(text[j]) && !(isupper(text[j])))
                 {
                     sum += text[j] - 97 + 1;
                 }
-                else if (text[j] >= 65 && text[j] <= 90)
+                else if (isalpha(text[j]) && isupper(text[j]))
                 {
                     sum += text[j] - 65 + 1;
                 }
