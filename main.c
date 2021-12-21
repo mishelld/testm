@@ -163,9 +163,11 @@ void p(int isPrint, int j,int i,char text[TXT]){
                 {
                     printf("~");
                 }
-                for (int k = i; k <= j; k++)
+                int k = i;
+                while (k <= j)
                 {
                     printf("%c", text[k]);
+                    k++;
                 }
 }
 
@@ -180,6 +182,7 @@ void gematriaSequences(char word[WORD],char text[TXT])
     int wordGematria = sum;
     int isPrint = 0;
     int i = 0;
+    //passed
     for (int i = 0;text[i] != '\0';i++)
     {
         int sum = 0;
@@ -318,6 +321,7 @@ int isEmpty(char arr[WORD]){
 void AnagramSequences(char word[WORD], char text[TXT]){
     int firstPrint = 1;
     int i = 0;
+    //passed
     while(text[i] != '\0'){
         if(text[i] != ' '){
             int keep = 1;
