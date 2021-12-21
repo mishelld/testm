@@ -46,12 +46,14 @@ int gematria(char c){
 void gematriaSequences(char word[WORD], char text[TXT]){
     printf("Gematria Sequences: ");
     int sum = 0;
+    //past
     for(int i =0;word[i] != '\0';i++){
         sum += gematria(word[i]);
     }
     int need = sum;
     int firstPrint = TRUE;
-    for(int i = 0; text[i] != '\0'; i++){
+    int i = 0
+    while(text[i] != '\0'){
         if(gematria(text[i]) > 0){
             int sum = 0;
             int keep = TRUE;
@@ -74,6 +76,7 @@ void gematriaSequences(char word[WORD], char text[TXT]){
             }
         }
     }
+    i++;
     printf("\n");
 }
 
