@@ -181,6 +181,17 @@ int g(char word[WORD])
     return wordGematria;
 }
 
+void p(int isPrint, int j,int i,char text[TXT]){
+      if (isPrint)
+                {
+                    printf("~");
+                }
+                for (int k = i; k <= j; k++)
+                {
+                    printf("%c", text[k]);
+                }
+}
+
 void gematriaSequences(char word[WORD],char text[TXT])
 {
     int wordGematria = g(word);
@@ -190,31 +201,24 @@ void gematriaSequences(char word[WORD],char text[TXT])
     {
         int sum = 0;
         int j = i;
-        if ((text[i] >= 'a' && text[i] <= 'z') || (text[i] >= 'A' && text[i] <= 'Z'))
+        if ((text[i] >= 97 && text[i] <= 122) || (text[i] >= 65 && text[i] <= 90))
         {
             while (text[j] != '\0' && sum < wordGematria)
             {
-                if (text[j] >= 'a' && text[j] <= 'z')
+                if (text[j] >= 97 && text[j] <= 122)
                 {
-                    sum += text[j] - 'a' + 1;
+                    sum += text[j] - 97 + 1;
                 }
-                else if (text[j] >= 'A' && text[j] <= 'Z')
+                else if (text[j] >= 65 && text[j] <= 90)
                 {
-                    sum += text[j] - 'A' + 1;
+                    sum += text[j] - 65 + 1;
                 }
                 ++j;
             }
             --j;
             if (sum == wordGematria)
             {
-                if (isPrint)
-                {
-                    printf("~");
-                }
-                for (int k = i; k <= j; k++)
-                {
-                    printf("%c", text[k]);
-                }
+               p(isPrint,j,i,text);
                 ++isPrint;
             }
         }
