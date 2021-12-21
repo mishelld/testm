@@ -35,7 +35,7 @@ void insertText(char text[TXT]){
 int gematria(char c){
 
     for(int i = 0 ; i < 26; i++){
-        if(c == abc[i] || c == abd[i] - 32){ // For example: a = 97 - 32 -> A = 65 
+        if(c == abc[i] || c == abc[i] - 32){ // For example: a = 97 - 32 -> A = 65 
             return i + 1;
         }
     }
