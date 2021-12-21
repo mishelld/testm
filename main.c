@@ -156,7 +156,8 @@ void h (char word[WORD], char text[WORD],int firstPrint){
             int keep1 = 1;
             int keep2 = 1;
             int skip = 0;
-            for(int j = 0; keep1 || keep2; j++){
+            int j = 0;
+            while( keep1 || keep2){
                 if(text[i + j] != ' '){
                     if(keep1){
                         if(atbashWord[j - skip] == '\0'){
@@ -166,9 +167,12 @@ void h (char word[WORD], char text[WORD],int firstPrint){
                             else{
                                 firstPrint = 0;
                             }
-                            for(int g = i; g <= i + j - 1; g++){
+                            int g = i;
+                            while(g <= i + j - 1){
                                 printf("%c", text[g]);
+                                g++;
                             }
+                            
                             keep1 = 0;
                         }
                         else if(text[i + j] != atbashWord[j - skip]){
@@ -196,6 +200,7 @@ void h (char word[WORD], char text[WORD],int firstPrint){
                 else{
                     skip++;
                 }
+                j++;
             }
         }
         i++;
