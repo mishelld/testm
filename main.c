@@ -317,7 +317,8 @@ int isEmpty(char arr[WORD]){
 
 void AnagramSequences(char word[WORD], char text[TXT]){
     int firstPrint = 1;
-    for(int i = 0; text[i] != '\0'; i++){
+    int i = 0;
+    while(text[i] != '\0'){
         if(text[i] != ' '){
             int keep = 1;
             //past
@@ -327,6 +328,7 @@ void AnagramSequences(char word[WORD], char text[TXT]){
                     //past
                     int k = -1;
                     int f = 0;
+                    //passed
                     while(copy[f] != '\0'){
                     if(copy[f] == text[j]){
                      k=f;
@@ -357,6 +359,7 @@ void AnagramSequences(char word[WORD], char text[TXT]){
                 }
             }
         }
+         i++;
     }
 }
 
