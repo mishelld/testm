@@ -7,6 +7,7 @@
 #define WORD 30
 #define TRUE 1
 #define FALSE 0
+char copy[WORD];
 
 
 const int abc[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 
@@ -179,8 +180,22 @@ int isEmpty(char arr[WORD]){
     }
     return TRUE;
 }
+void lp(int firstPrint,int j,int keep,int i,char text[TXT]){
+     if(isEmpty(copy)){
+                    if(!firstPrint){
+                        printf("~");
+                    }
+                    else{
+                        firstPrint = FALSE;
+                    }
+                    for(int g = i; g <= j; g++){
+                        printf("%c", text[g]);
+                    }
+                    keep = FALSE;
+                }
+}
 void AnagramSequences(char word[WORD], char text[TXT]){
-    char copy[WORD];
+    
     int firstPrint = TRUE;
     for(int i = 0; text[i] != '\0'; i++){
         if(text[i] != ' '){
@@ -203,30 +218,14 @@ void AnagramSequences(char word[WORD], char text[TXT]){
                         keep = FALSE;
                     }
                 }
+                lp(firstPrint,j,keep, i,text);
                /* int notf = 1;
                 for(int i = 0; copy[i] != '\0'; i++){
                if(copy[i] != -1){
                    notf=0;
                  }   
                 }*/
-                  int t = TRUE;
-                  for(int i = 0;copy[i] != '\0'; i++){
-                    if(copy[i] != -1) t = FALSE;
-                          }
-  
-
-                if(t){
-                    if(!firstPrint){
-                        printf("~");
-                    }
-                    else{
-                        firstPrint = FALSE;
-                    }
-                    for(int g = i; g <= j; g++){
-                        printf("%c", text[g]);
-                    }
-                    keep = FALSE;
-                }
+               
             }
         }
     }
