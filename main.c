@@ -62,122 +62,6 @@ int gematria(char c){
     return 0;
 }
    
-
-
-
-/*void f(int firstPrint ,int need,char text[TXT]){
-for(int i = 0; text[i] != '\0'; i++){
-        if(gematria(text[i]) > 0){
-            int sum = 0;
-            int keep = 1;
-          for(int j = i; keep; j++){
-                sum += gematria(text[j]);
-                if(sum == need){
-                    if(!firstPrint){
-                        printf("~");
-                    }
-                    else{
-                        firstPrint = 0;
-                    }
-                    for(int g = i; g <= j; g++){
-                        printf("%c", text[g]);
-                    }
-                }
-                if(sum >= need || text[j + 1] == '\0'){
-                    keep = 0;
-                }
-            }
-        }
-            
-    }
-}
-
-void gematriaSequences(char word[WORD], char text[TXT]){
-    int sum = 0;
-    //past
-    for(int i =0;word[i] != '\0';i++){
-        sum += gematria(word[i]);
-    }
-    int need = sum;
-    int firstPrint = 1;
-    //past
-    f(firstPrint ,need,text);
-    printf("\n");
-}
-
-void p(int pr, int j,int i){
-     if (pr)
-                {
-                    printf("~");
-                }
-                for (int k = i; k <= j; k++)
-                {
-                    printf("%c", txt[k]);
-                }
-}*/
-/*int g(char word[WORD])
-{
-    int wordGematria = 0;
-    int i = 0;
-    while (word[i] != '\0')
-    {
-        if (word[i] >= 'a' && word[i] <= 'z')
-        {
-            wordGematria += word[i] - 'a' + 1;
-        }
-        else if (word[i] >= 'A' && word[i] <= 'Z')
-        {
-            wordGematria += word[i] - 'A' + 1;
-        }
-        ++i;
-    }
-    return wordGematria;
-}
-void p(int pr, int j,int i,char text[TXT]){
-     if (pr)
-                {
-                    printf("~");
-                }
-                for (int k = i; k <= j; k++)
-                {
-                    printf("%c", text[k]);
-                }
-}
-void gematriaSequences(char word[WORD],char text[TXT])
-{
-     int wordGematria = g(word);
-    int pr = 0;
-    for (int w = 0;text[w] != '\0';w++)
-    {
-        int u = 0;
-        int l = w;
-        if (isalpha(text[w]))
-        {
-            while (text[l] != '\0' && u < wordGematria)
-            { //lower case
-               if (text[l] >= 97 && text[l] <= 122)
-                {
-                    u = u +  text[l] - 97 + 1;
-                }
-                //upper case
-                else if (isupper(text[l]))
-                {
-                    u = u + text[l] - 65 + 1;
-                }
-               ++l;
-            }
-            --l;
-            //print the sequances we fuond as equal gimatrcli
-            if (u == wordGematria)
-            {
-                p(pr,l,w,text);
-                ++pr;
-            }
-        }
-        
-    }
-}*/
-
 void p(int isPrint, int j,int i,char text[TXT]){
       if (isPrint)
                 {
@@ -266,7 +150,8 @@ void ash(char word[WORD]){
     }
 }
 void h (char word[WORD], char text[WORD],int firstPrint){
-    for(int i = 0; text[i] != '\0'; i++){
+    int i = 0;
+    while(text[i] != '\0'){
         if(text[i] != ' '){
             int keep1 = 1;
             int keep2 = 1;
@@ -313,7 +198,9 @@ void h (char word[WORD], char text[WORD],int firstPrint){
                 }
             }
         }
+        i++;
     }
+    
 }
 void AtbashSequences(char word[WORD], char text[TXT]){
     
@@ -324,30 +211,12 @@ void AtbashSequences(char word[WORD], char text[TXT]){
     printf("\n");
 
 }
-
-
-
 int isEmpty(char arr[WORD]){
     for(int i = 0; arr[i] != '\0'; i++){
         if(arr[i] != -1)return 0;
     }
     return 1;
 }
-/*void h(int firstPrint ,int i,int j,int keep,char text[TXT]){
-    if(isEmpty(copy)){
-                    if(!firstPrint){
-                        printf("~");
-                    }
-                    else{
-                        firstPrint = 0;
-                    }
-                    for(int g = i; g <= j; g++){
-                        printf("%c", text[g]);
-                    }
-                    keep = 0;
-                }
-}*/
-
 void AnagramSequences(char word[WORD], char text[TXT]){
     int firstPrint = 1;
     int i = 0;
