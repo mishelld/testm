@@ -338,19 +338,17 @@ void AnagramSequences(char word[WORD], char text[TXT]){
                         keep = 0;
                     }
                 }
-                int e = 1;
-                for(int i = 0; copy[i] != '\0'; i++){
-                if(copy[i] != -1) e= 0;
-                  }
-                if(e==1){
+                if(isEmpty(copy)){
                     if(!firstPrint){
                         printf("~");
                     }
                     else{
                         firstPrint = 0;
                     }
-                    for(int g = i; g <= j; g++){
+                    int g = i;
+                    while(g <= j){
                         printf("%c", text[g]);
+                    g++;
                     }
                     keep = 0;
                 }
