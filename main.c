@@ -222,13 +222,13 @@ void AnagramSequences(char word[WORD], char text[TXT]){
                         keep = FALSE;
                     }
                 }
-                 int notf = 1;
+               /* int notf = 1;
                 for(int i = 0; copy[i] != '\0'; i++){
                if(copy[i] != -1){
                    notf=0;
                  }   
-                }
-                if(notf==1){
+                }*/
+                if(isEmpty(copy)){
                     if(!firstPrint){
                         printf("~");
                     }
