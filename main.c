@@ -226,9 +226,9 @@ void AnagramSequences(char word[WORD], char text[TXT]){
                 for(int i = 0; copy[i] != '\0'; i++){
                if(copy[i] != -1){
                    notf=0;
-               }   
+                 }   
                 }
-                if(notf){
+                if(notf==1){
                     if(!firstPrint){
                         printf("~");
                     }
