@@ -5,8 +5,7 @@
 
 #define TXT 1024
 #define WORD 30
-#define TRUE 1
-#define FALSE 0
+
 char copy[WORD];
 
 
@@ -54,7 +53,7 @@ int gematria(char c){
 for(int i = 0; text[i] != '\0'; i++){
         if(gematria(text[i]) > 0){
             int sum = 0;
-            int keep = TRUE;
+            int keep = 1;
           for(int j = i; keep; j++){
                 sum += gematria(text[j]);
                 if(sum == need){
@@ -62,14 +61,14 @@ for(int i = 0; text[i] != '\0'; i++){
                         printf("~");
                     }
                     else{
-                        firstPrint = FALSE;
+                        firstPrint = 0;
                     }
                     for(int g = i; g <= j; g++){
                         printf("%c", text[g]);
                     }
                 }
                 if(sum >= need || text[j + 1] == '\0'){
-                    keep = FALSE;
+                    keep = 0;
                 }
             }
         }
@@ -84,7 +83,7 @@ void gematriaSequences(char word[WORD], char text[TXT]){
         sum += gematria(word[i]);
     }
     int need = sum;
-    int firstPrint = TRUE;
+    int firstPrint = 1;
     //past
     f(firstPrint ,need,text);
     printf("\n");
@@ -162,24 +161,6 @@ void gematriaSequences(char word[WORD],char text[TXT])
         
     }
 }*/
-int g(char word[WORD])
-{
-    int wordGematria = 0;
-    int i = 0;
-    while (word[i] != '\0')
-    {
-        if (word[i] >= 'a' && word[i] <= 'z')
-        {
-            wordGematria += word[i] - 'a' + 1;
-        }
-        else if (word[i] >= 'A' && word[i] <= 'Z')
-        {
-            wordGematria += word[i] - 'A' + 1;
-        }
-        ++i;
-    }
-    return wordGematria;
-}
 
 void p(int isPrint, int j,int i,char text[TXT]){
       if (isPrint)
@@ -262,11 +243,11 @@ void AtbashSequences(char word[WORD], char text[TXT]){
     atbash(word, atbashWord);
     char reversedAtbash[WORD];
     reverse(atbashWord, reversedAtbash);
-    int firstPrint = TRUE;
+    int firstPrint = 1;
     for(int i = 0; text[i] != '\0'; i++){
         if(text[i] != ' '){
-            int keep1 = TRUE;
-            int keep2 = TRUE;
+            int keep1 = 1;
+            int keep2 = 1;
             int skip = 0;
             for(int j = 0; keep1 || keep2; j++){
                 if(text[i + j] != ' '){
@@ -276,15 +257,15 @@ void AtbashSequences(char word[WORD], char text[TXT]){
                                 printf("~");
                             }
                             else{
-                                firstPrint = FALSE;
+                                firstPrint = 0;
                             }
                             for(int g = i; g <= i + j - 1; g++){
                                 printf("%c", text[g]);
                             }
-                            keep1 = FALSE;
+                            keep1 = 0;
                         }
                         else if(text[i + j] != atbashWord[j - skip]){
-                            keep1 = FALSE;
+                            keep1 = 0;
                         }
                     }
                     if(keep2){
@@ -293,15 +274,15 @@ void AtbashSequences(char word[WORD], char text[TXT]){
                                 printf("~");
                             }
                             else{
-                                firstPrint = FALSE;
+                                firstPrint = 0;
                             }
                             for(int g = i; g <= i + j - 1; g++){
                                 printf("%c", text[g]);
                             }
-                            keep2 = FALSE;
+                            keep2 = 0;
                         }
                         else if(text[i + j] != reversedAtbash[j - skip]){
-                            keep2 = FALSE;
+                            keep2 = 0;
                         }
                     }
                 }
@@ -319,16 +300,30 @@ void AtbashSequences(char word[WORD], char text[TXT]){
 
 int isEmpty(char arr[WORD]){
     for(int i = 0; arr[i] != '\0'; i++){
-        if(arr[i] != -1)return FALSE;
+        if(arr[i] != -1)return 0;
     }
-    return TRUE;
+    return 1;
 }
+/*void h(int firstPrint ,int i,int j,int keep,char text[TXT]){
+    if(isEmpty(copy)){
+                    if(!firstPrint){
+                        printf("~");
+                    }
+                    else{
+                        firstPrint = 0;
+                    }
+                    for(int g = i; g <= j; g++){
+                        printf("%c", text[g]);
+                    }
+                    keep = 0;
+                }
+}*/
 
 void AnagramSequences(char word[WORD], char text[TXT]){
-    int firstPrint = TRUE;
+    int firstPrint = 1;
     for(int i = 0; text[i] != '\0'; i++){
         if(text[i] != ' '){
-            int keep = TRUE;
+            int keep = 1;
             //past
             strcpy(copy, word);
             for(int j = i; keep && text[j] != '\0' ; j++){
@@ -344,22 +339,21 @@ void AnagramSequences(char word[WORD], char text[TXT]){
                         copy[k] = -1;
                     }
                     else{
-                        keep = FALSE;
+                        keep = 0;
                     }
                 }
-                 if(isEmpty(copy)){
+                if(isEmpty(copy)){
                     if(!firstPrint){
                         printf("~");
                     }
                     else{
-                        firstPrint = FALSE;
+                        firstPrint = 0;
                     }
                     for(int g = i; g <= j; g++){
                         printf("%c", text[g]);
                     }
-                    keep = FALSE;
+                    keep = 0;
                 }
-               
             }
         }
     }
