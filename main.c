@@ -5,8 +5,8 @@
 #define TRUE 1
 #define FALSE 0
 
-const int abc[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 
-                     's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+const int abc[26] = "abcdefghijklmnopqrstuwxyz";
+const int abd[26] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 void insertWord(char word[WORD]){
     int count = 0;
@@ -33,22 +33,13 @@ void insertText(char text[TXT]){
 }
 
 int gematria(char c){
+
     for(int i = 0 ; i < 26; i++){
         if(c == abc[i] || c == abc[i] - 32){ // For example: a = 97 - 32 -> A = 65 
             return i + 1;
         }
     }
     return 0;
-}
-
-int gematriaOfWord(char word[WORD]){
-    int sum = 0;
-    int i = 0;
-    while(word[i] != '\0'){
-        sum += gematria(word[i]);
-        i++;
-    }
-    return sum;
 }
 
 void gematriaSequences(char word[WORD], char text[TXT]){
