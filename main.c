@@ -50,7 +50,7 @@ int gematria(char c){
 }
 
 
-void f(int firstPrint ,int need,char text[TXT]){
+/*void f(int firstPrint ,int need,char text[TXT]){
 for(int i = 0; text[i] != '\0'; i++){
         if(gematria(text[i]) > 0){
             int sum = 0;
@@ -88,6 +88,79 @@ void gematriaSequences(char word[WORD], char text[TXT]){
     //past
     f(firstPrint ,need,text);
     printf("\n");
+}
+
+void p(int pr, int j,int i){
+     if (pr)
+                {
+                    printf("~");
+                }
+                for (int k = i; k <= j; k++)
+                {
+                    printf("%c", txt[k]);
+                }
+}*/
+int g(char word[WORD])
+{
+    int wordGematria = 0;
+    int i = 0;
+    while (word[i] != '\0')
+    {
+        if (word[i] >= 'a' && word[i] <= 'z')
+        {
+            wordGematria += word[i] - 'a' + 1;
+        }
+        else if (word[i] >= 'A' && word[i] <= 'Z')
+        {
+            wordGematria += word[i] - 'A' + 1;
+        }
+        ++i;
+    }
+    return wordGematria;
+}
+void p(int pr, int j,int i,char text[TXT]){
+     if (pr)
+                {
+                    printf("~");
+                }
+                for (int k = i; k <= j; k++)
+                {
+                    printf("%c", text[k]);
+                }
+}
+void gematriaSequences(char word[WORD],char text[TXT])
+{
+     int wordGematria = g(word);
+    int pr = 0;
+    for (int w = 0;text[w] != '\0';w++)
+    {
+        int u = 0;
+        int l = w;
+        if (isalpha(text[w]))
+        {
+            while (text[l] != '\0' && u < wordGematria)
+            { //lower case
+               if (text[l] >= 97 && text[l] <= 122)
+                {
+                    u = u +  text[l] - 97 + 1;
+                }
+                //upper case
+                else if (isupper(text[l]))
+                {
+                    u = u + text[l] - 65 + 1;
+                }
+               ++l;
+            }
+            --l;
+            //print the sequances we fuond as equal gimatrcli
+            if (u == wordGematria)
+            {
+                p(pr,l,w,text);
+                ++pr;
+            }
+        }
+        
+    }
 }
 
 void reverse(char from[WORD], char to[WORD]){
@@ -183,7 +256,6 @@ int isEmpty(char arr[WORD]){
 }
 
 void AnagramSequences(char word[WORD], char text[TXT]){
-    
     int firstPrint = TRUE;
     for(int i = 0; text[i] != '\0'; i++){
         if(text[i] != ' '){
