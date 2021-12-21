@@ -52,8 +52,9 @@ void gematriaSequences(char word[WORD], char text[TXT]){
     }
     int need = sum;
     int firstPrint = TRUE;
-    int i = 0
-    while(text[i] != '\0'){
+    int i = 0;
+    while(text[i] != '\0')
+    {
         if(gematria(text[i]) > 0){
             int sum = 0;
             int keep = TRUE;
