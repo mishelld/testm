@@ -42,6 +42,7 @@ void w(char word[WORD],char text[TXT]){
         scanf("%c", &data);
     }
     word[temp] = '\0';
+    temp =0;
      while(temp < TXT && data != '~'){
         text[temp] = data;
         temp++;
