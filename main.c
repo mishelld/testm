@@ -8,11 +8,10 @@
 
 
 
-
 char c[WORD];
 char a[WORD];
 char b[WORD];
-char d[WORD];
+char reversedAtbash[WORD];
 const int abc[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
                      's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
@@ -149,11 +148,6 @@ void ash(char word[WORD]){
         f++;
     }
 }
-
-
-
-
-
 void q(int on,int over,int p,int g,char text[WORD],int s){
     if(on){
         if(b[g - over] == '\0'){
@@ -174,69 +168,67 @@ void q(int on,int over,int p,int g,char text[WORD],int s){
             on = 0;
         }
     }
-
-
 }
-void h (char word[WORD], char text[WORD],int s){
-    int x = 0;
-    while(text[x] != '\0'){
-        if(text[x] != ' '){
-           int flagone = 1,flagt = 1,flagtr = 0,v = 0;
-            while(flagone || flagt){
-                if(text[x + v] != ' '){
-                    if(flagone){
-                        if(a[v - flagtr] == '\0'){
-                            if(!s){
+void h (char word[WORD], char text[WORD],int firstPrint){
+    int i = 0;
+    while(text[i] != '\0'){
+        if(text[i] != ' '){
+            int keep1 = 1,keep2 = 1,skip = 0,j = 0;
+            while(keep1 || keep2){
+                if(text[i + j] != ' '){
+                    if(keep1){
+                        if(a[j - skip] == '\0'){
+                            if(!firstPrint){
                                 printf("~");
                             }
                             else{
-                                s = 0;
+                                firstPrint = 0;
                             }
-                            int q = x;
-                            while(q <= x + v - 1){
-                                printf("%c", text[q]);
-                                q++;
+                            int g = i;
+                            while(g <= i + j - 1){
+                                printf("%c", text[g]);
+                                g++;
                             }
 
-                            flagone = 0;
+                            keep1 = 0;
                         }
-                        else if(text[x + v] != a[v - flagtr]){
-                            flagone = 0;
+                        else if(text[i + j] != a[j - skip]){
+                            keep1 = 0;
                         }
                     }
-                    if(flagt){
-                        if(d[v - flagtr] == '\0'){
-                            if(!s){
+                    if(keep2){
+                        if(reversedAtbash[j - skip] == '\0'){
+                            if(!firstPrint){
                                 printf("~");
                             }
                             else{
-                                s = 0;
+                                firstPrint = 0;
                             }
-                            for(int g = x; g <= x + v - 1; g++){
+                            for(int g = i; g <= i + j - 1; g++){
                                 printf("%c", text[g]);
                             }
-                            flagt = 0;
+                            keep2 = 0;
                         }
-                        else if(text[x + v] != d[v - flagtr]){
-                            flagt = 0;
+                        else if(text[i + j] != reversedAtbash[j - skip]){
+                            keep2 = 0;
                         }
                     }
                 }
                 else{
-                    flagtr++;
+                    skip++;
                 }
-                v++;
+                j++;
             }
         }
-        x++;
+        i++;
     }
 
 }
 void AtbashSequences(char word[WORD], char text[TXT]){
     ash(word);
-    uno(a, d);
-    int s = 1;
-    h(word, text,s);
+    uno(a, reversedAtbash);
+    int firstPrint = 1;
+    h(word, text,firstPrint);
     printf("\n");
 
 }
