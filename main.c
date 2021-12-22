@@ -169,58 +169,58 @@ void q(int on,int over,int p,int g,char text[WORD],int s){
         }
     }
 }
-void h (char word[WORD], char text[WORD],int firstPrint){
-    int i = 0;
-    while(text[i] != '\0'){
-        if(text[i] != ' '){
-            int keep1 = 1,keep2 = 1,skip = 0,j = 0;
-            while(keep1 || keep2){
-                if(text[i + j] != ' '){
-                    if(keep1){
-                        if(a[j - skip] == '\0'){
-                            if(!firstPrint){
+void h (char word[WORD], char text[WORD],int s){
+    int k = 0;
+    while(text[k] != '\0'){
+        if(text[k] != ' '){
+            int fo = 1,f2 = 1,f3 = 0,m = 0;
+            while(fo || f2){
+                if(text[k + m] != ' '){
+                    if(fo){
+                        if(a[m - f3] == '\0'){
+                            if(!s){
                                 printf("~");
                             }
                             else{
-                                firstPrint = 0;
+                                s = 0;
                             }
-                            int g = i;
-                            while(g <= i + j - 1){
-                                printf("%c", text[g]);
-                                g++;
+                            int q = k;
+                            while(q <= k + m - 1){
+                                printf("%c", text[q]);
+                                q++;
                             }
 
-                            keep1 = 0;
+                            fo = 0;
                         }
-                        else if(text[i + j] != a[j - skip]){
-                            keep1 = 0;
+                        else if(text[k + m] != a[m - f3]){
+                            fo = 0;
                         }
                     }
-                    if(keep2){
-                        if(reversedAtbash[j - skip] == '\0'){
-                            if(!firstPrint){
+                    if(f2){
+                        if(reversedAtbash[m - f3] == '\0'){
+                            if(!s){
                                 printf("~");
                             }
                             else{
-                                firstPrint = 0;
+                                s = 0;
                             }
-                            for(int g = i; g <= i + j - 1; g++){
+                            for(int g = k; g <= k + m - 1; g++){
                                 printf("%c", text[g]);
                             }
-                            keep2 = 0;
+                            f2 = 0;
                         }
-                        else if(text[i + j] != reversedAtbash[j - skip]){
-                            keep2 = 0;
+                        else if(text[k + m] != reversedAtbash[m - f3]){
+                            f2 = 0;
                         }
                     }
                 }
                 else{
-                    skip++;
+                    f3++;
                 }
-                j++;
+                m++;
             }
         }
-        i++;
+        k++;
     }
 
 }
