@@ -292,7 +292,8 @@ void Q3(char word[WORD], char text[TXT]){
 
 
 void o(char word[WORD], char text[TXT]){
-    int s = 1,t = 0;
+    int s = 1;
+    int t = 0;
     //passed
     while(text[t] != '\0'){
         if(text[t] != ' '){
