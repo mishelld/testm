@@ -274,7 +274,7 @@ void Q2(char word[WORD], char text[TXT]){
     printf("\n");
 
 }
-int isEmpty(char arr[WORD]){
+int plz(char arr[WORD]){
     for(int i = 0; arr[i] != '\0'; i++){
         if(arr[i] != -1)return 0;
     }
@@ -308,7 +308,7 @@ void AnagramSequences(char word[WORD], char text[TXT]){
                         f1 = 0;
                     }
                 }
-                if(isEmpty(c)){
+                if(plz(c)){
                     if(!b){
                         printf("~");
                     }
