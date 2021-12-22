@@ -11,7 +11,7 @@
 char c[WORD];
 char a[WORD];
 char b[WORD];
-char reversedAtbash[WORD];
+char d[WORD];
 const int abc[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
                      's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
@@ -197,7 +197,7 @@ void h (char word[WORD], char text[WORD],int s){
                         }
                     }
                     if(f2){
-                        if(reversedAtbash[m - f3] == '\0'){
+                        if(d[m - f3] == '\0'){
                             if(!s){
                                 printf("~");
                             }
@@ -209,7 +209,7 @@ void h (char word[WORD], char text[WORD],int s){
                             }
                             f2 = 0;
                         }
-                        else if(text[k + m] != reversedAtbash[m - f3]){
+                        else if(text[k + m] != d[m - f3]){
                             f2 = 0;
                         }
                     }
@@ -224,11 +224,11 @@ void h (char word[WORD], char text[WORD],int s){
     }
 
 }
-void AtbashSequences(char word[WORD], char text[TXT]){
+void Q2(char word[WORD], char text[TXT]){
     ash(word);
-    uno(a, reversedAtbash);
-    int firstPrint = 1;
-    h(word, text,firstPrint);
+    uno(a, d);
+    int s = 1;
+    h(word, text,s);
     printf("\n");
 
 }
@@ -353,7 +353,7 @@ int main(){
     Q1(word,text);
     printf("\n");
     printf("Atbash Sequences: ");
-    AtbashSequences(word, text);
+    Q2(word, text);
     printf("Anagram Sequences: ");
     AnagramSequences(word, text);
 
