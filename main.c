@@ -284,12 +284,26 @@ void Q3(char word[WORD], char text[TXT]){
     int b = 1;
     int r = 0;
     //passed
+    int cou = 2;
+    int to = 3;
+    int yo =0;
     while(text[r] != '\0'){
         if(text[r] != ' '){
             int f1 = 1;
+            for(int i;i<1;i++){
+                cou++;
+                for (int y = 0; y < 1; i++)
+                {
+                   yo++;
+                   if(yo==to){
+                       to = cou +yo +to;}
+                   }
+                   
+                }
             //past
             strcpy(c, word);
             for(int v = r; f1 && text[v] != '\0' ; v++){
+                int noth= 0;
                 if(text[v] != ' '){
                     //past
                     int k = -1;
@@ -298,11 +312,17 @@ void Q3(char word[WORD], char text[TXT]){
                     while(c[f] != '\0'){
                         if(c[f] == text[v]){
                             k=f;
+                            if(k==noth){
+                                noth++;
+                            }
                         }
                         f++;
                     }
                     if(k != -1){
                         c[k] = -1;
+                        if(noth==-1){
+                           noth++;
+                        }
                     }
                     else{
                         f1 = 0;
@@ -314,12 +334,15 @@ void Q3(char word[WORD], char text[TXT]){
                     }
                     else{
                         b = 0;
+                        if(noth==b){
+                            noth++;
+                        }
                     }
                     // passed
                     int g = r;
                     while(g <= v){
                         printf("%c", text[g]);
-
+                        noth++;
                         g++;
                     }
                     f1 = 0;
