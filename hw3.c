@@ -237,10 +237,53 @@ void h (char ver[WORD], char str[WORD],int s){
     while(str[k] != '\0'){
         if(str[k] != ' '){
             int number = count(ver);
+            /*
+            void Ashbash(){
+    char word[WORD];
+    scanf("%29s", word);
+    int count = 0;
+    for(int i = 0 ; (word[i] != ' ' && word[i] != '\t' && word[i] != '\n' && word[i] != '\0'); i++){
+        if((word[i] >= 65 && word[i] <= 90)||(word[i] >= 97 && word[i] <= 122)){
+            count++;
+        }
+    }
+    char new_word[count];
+    int k = 0;
+    for(int j =  0 ; k < count ; j++){
+        if((word[j] >= 65 && word[j] <= 90)||(word[j] >= 97 && word[j] <= 122)){
+            new_word[k] = word[j];
+            k++;
+        }
+    }
+    for(int m = 0 ; m < count ; m++){
+        new_word[m] = atbash(new_word[m]);
+    }
+            */
             int fo = 1,f2 = 1,f3 = 0,m = 0;
             while(fo || f2){
                 if(str[k + m] != ' '){
                     if(fo && number >= 0){
+                        /*
+har printit[20]= {'\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0'};
+    int place = 0;
+    for(int n1 = 0 ; text[n1] != '~' ; n1++){
+        int ind = 1;
+        int flag = 0;
+        if(text[n1] == new_word[0]){
+            int num = n1+1;
+            int a = count;
+            a--;
+            printf("%d\n",a);
+            printf("%d\n",count);
+            printf("%c\n",text[n1]);
+            printf("%c\n",new_word[0]);
+            while( flag == 0 && a > 0){
+                if(text[num++] != new_word[ind++] ){
+                    flag = 1;
+                }
+                a--;
+            }
+                        */
                         if(a[m - f3] == '\0'){
                             if(!s){
                                 printf("~");
@@ -253,17 +296,54 @@ void h (char ver[WORD], char str[WORD],int s){
                                 printf("%c", str[q]);
                                 q++;
                             }
+                            /*
+  else if(text[n1] == revers_word[0]){
+            int num = n1+1;
+            int a = count;
+            while( flag == 0 && a > 0){
+                if(text[num++] != revers_word[ind++] ){
+                    flag = 1;
+                }
+                a--;
+            }
+            if (flag == 0 ){
+            num = n1;
+            ind = 0;
+            a = count;
+            while( a > 0 ){
+                printit[place++]  = revers_word[ind++];
+                a--;
+            }
+            printit[place++] = '~';
+
+        }
+        }
+    }
+                            */
+                
                             fo = 0;
                         }
                         else if(str[k + m] != a[m - f3]){
                             fo = 0;
                         }
                     }
+
                     if(f2 && number >= 0){
                         if(d[m - f3] == '\0'){
                             if(!s){
                                 printf("~");
-                            }
+                            }/*
+                              if (flag == 0 ){
+            num = n1;
+            ind = 0;
+            a = count;
+            while( a > 0 ){
+                printit[place++]  = revers_word[ind++];
+                a--;
+            }
+            printit[place++] = '~';
+
+                            */
                             else{
                                 s = 0;
                             }
@@ -273,6 +353,19 @@ void h (char ver[WORD], char str[WORD],int s){
                                     printf("%c", str[g]);
                                 }
                             }
+                            /*
+                            *char text[TXT];
+    scanf("%1023s", text);
+    printf("Atbash Sequences: ");
+    char printit[TXT];
+    int place = 0;
+    int count1 = 0;
+    for(int n1 = 0 ; text[n1] != '~' ; n1++){
+        int flag = findin(text[n1],new_word);
+        if(flag == 0){
+            if(count1 == 0){
+                printit[place++] = text[n1];
+                            */
                             f2 = 0;
                         }
                         else if(str[k + m] != d[m - f3]){
@@ -523,7 +616,6 @@ int main(){
     char ver[WORD];
     char str[TXT];
     w(ver,str);
-    //  t(text);
     printf("Gematria Sequences: ");
     Q1(ver,str);
     printf("\n");
