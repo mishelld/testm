@@ -286,10 +286,10 @@ void AnagramSequences(char word[WORD], char text[TXT]){
     //passed
     while(text[r] != '\0'){
         if(text[r] != ' '){
-            int keep = 1;
+            int f1 = 1;
             //past
             strcpy(c, word);
-            for(int v = r; keep && text[v] != '\0' ; v++){
+            for(int v = r; f1 && text[v] != '\0' ; v++){
                 if(text[v] != ' '){
                     //past
                     int k = -1;
@@ -305,7 +305,7 @@ void AnagramSequences(char word[WORD], char text[TXT]){
                         c[k] = -1;
                     }
                     else{
-                        keep = 0;
+                        f1 = 0;
                     }
                 }
                 if(isEmpty(c)){
@@ -322,7 +322,7 @@ void AnagramSequences(char word[WORD], char text[TXT]){
 
                         g++;
                     }
-                    keep = 0;
+                    f1 = 0;
                 }
             }
         }
