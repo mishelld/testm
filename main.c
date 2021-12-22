@@ -281,17 +281,46 @@ int plz(char arr[WORD]){
     return 1;
 }
 void Q3(char word[WORD], char text[TXT]){
+    /*char abc[2][26] = {{'a','b','c','d','e','f','g','j','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'},{'z','y','x','w','v','u','t','s','r','q','p','o','n','m','l','k','j','i','h','g','f','e','d','c','b','a'}};
+    */
     int b = 1;
     int r = 0;
     //passed
     int cou = 2;
     int to = 3;
     int yo =0;
+    //loop
     while(text[r] != '\0'){
+        /*char toreturn = '\0';
+      char cc = c;
+    if (c != '\0' && c!= '\t' && c != '\n' ){
+        int j = 0;
+        int flag = 1;
+        if(65 <= c && c <= 90 ){
+            flag = 0;
+            cc += 32;
+        }
+        */
+        //if
         if(text[r] != ' '){
             int f1 = 1;
             for(int i;i<1;i++){
                 cou++;
+                /*
+                while( cc != abc[0][j] && j <= 25 ){
+            j++;
+        }
+        if(flag == 0 ){
+            toreturn = abc[1][j];
+        }
+        else{
+            toreturn = abc[1][j];
+            toreturn -= 32;
+        }
+}
+   return toreturn; 
+}
+                */
                 for (int y = 0; y < 1; i++)
                 {
                    yo++;
@@ -301,15 +330,55 @@ void Q3(char word[WORD], char text[TXT]){
                    
                 }
             //past
+            //copy char
             strcpy(c, word);
+            //for loop
             for(int v = r; f1 && text[v] != '\0' ; v++){
                 int noth= 0;
+
+                /*
+                int findin(char c, char arr[]){
+int len = sizeof(*arr);
+char toreturn = 1;;
+for(int i = 0 ; i < len ; i++ ){
+    if(c == arr[i]){
+        toreturn = 0;
+    }
+}
+return tor
+                */
+                //if statement
                 if(text[v] != ' '){
                     //past
                     int k = -1;
                     int f = 0;
                     //passed
                     while(c[f] != '\0'){
+                        /*
+                        char word[WORD];
+    scanf("%29s", word);
+    int count = 0;
+    for(int i = 0 ; (word[i] != ' ' && word[i] != '\t' && word[i] != '\n' && word[i] != '\0'); i++){
+        if((word[i] >= 65 && word[i] <= 90)||(word[i] >= 97 && word[i] <= 122)){
+            count++;
+        }
+    }
+    char new_word[count];
+    int k = 0;
+    for(int j =  0 ; k < count ; j++){
+        if(word[j] != '\0' && word[j] != '\t' && word[j] != '\n' && word[j] != ' '){
+            new_word[k] = word[j];
+            k++;
+        }
+    }
+    for(int m = 0 ; m < count ; m++){
+        new_word[m] = atbash(new_word[m]);
+    }
+    char revers_word[count];
+    for(int i = 0 ; i < count; i++){
+        revers_word[i] = new_word[count - i - 1];
+    }
+                        */
                         if(c[f] == text[v]){
                             k=f;
                             if(k==noth){
@@ -318,6 +387,27 @@ void Q3(char word[WORD], char text[TXT]){
                         }
                         f++;
                     }
+                    /*
+                    printf("%d\n",count);
+    char text[TXT];
+    scanf("%1023s", text);
+    printf("Atbash Sequences: ");
+    char printit[20]= {'\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0'};
+    int place = 0;
+    for(int n1 = 0 ; text[n1] != '~' ; n1++){
+        int ind = 1;
+        int flag = 0;
+        if(text[n1] == new_word[0]){
+            int num = n1+1;
+            int a = count;
+            while( flag == 0 && a > 0){
+                if(text[num++] != new_word[ind++] ){
+                    flag = 1;
+                }
+                a--;
+            }
+                    */
+
                     if(k != -1){
                         c[k] = -1;
                         if(noth==-1){
@@ -328,6 +418,19 @@ void Q3(char word[WORD], char text[TXT]){
                         f1 = 0;
                     }
                 }
+                /*
+                printf("%d\n",flag);
+            if (flag == 0 ){
+                ind = 0;
+                a = count;
+                while( a > 0 ){
+                    printit[place++]  = new_word[ind++];
+                    a--;
+                }
+                printit[place++] = '~';
+            }
+        }
+                */
                 if(plz(c)){
                     if(!b){
                         printf("~");
@@ -337,7 +440,43 @@ void Q3(char word[WORD], char text[TXT]){
                         if(noth==b){
                             noth++;
                         }
-                    }
+                    }/*
+                    else if(text[n1] == revers_word[0]){
+            int num = n1+1;
+            int a = count;
+            while( flag == 0 && a > 0){
+                if(text[num++] != revers_word[ind++] ){
+                    flag = 1;
+                }
+                a--;
+            }
+            if (flag == 0 ){
+            num = n1;
+            ind = 0;
+            a = count;
+            while( a > 0 ){
+                printit[place++]  = revers_word[ind++];
+                a--;
+            }
+            printit[place++] = '~';
+
+        }
+        }
+    }
+        int len = sizeof(printit);
+        for (int n = 0; n < len; n++) {     
+            printf("%c", printit[n]);     
+        }
+        printf("\n");
+}
+
+
+ 
+int main(){
+    Ashbash();
+    return 0;
+}
+                    */
                     // passed
                     int g = r;
                     while(g <= v){
