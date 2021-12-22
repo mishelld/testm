@@ -240,9 +240,9 @@ void Q2(char word[WORD], char text[TXT]){
     printf("\n");
 
 }
-int sec(char arr[WORD]){
-    for(int x = 0; arr[x] != '\0'; x++){
-        if(arr[x] != -1)return 0;
+int isEmpty(char arr[WORD]){
+    for(int i = 0; arr[i] != '\0'; i++){
+        if(arr[i] != -1)return 0;
     }
     return 1;
 }
@@ -274,7 +274,7 @@ void AnagramSequences(char word[WORD], char text[TXT]){
                         keep = 0;
                     }
                 }
-                if(sec(c)){
+                if(isEmpty(c)){
                     if(!firstPrint){
                         printf("~");
                     }
@@ -326,7 +326,7 @@ void o(char word[WORD], char text[TXT]){
                         keep = 0;
                     }
                 }
-                if(sec(a)){
+                if(isEmpty(a)){
                     if(!firstPrint){
                         printf("~");
                     }
