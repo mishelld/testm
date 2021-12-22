@@ -77,22 +77,45 @@ void p(int live, int a,int b,char text[TXT]){
     }
 }
 
-void Q1(char word[WORD], char text[TXT])
-{
+int findin(char c){
+    int len = sizeof(abc);
+    char toreturn = 1;
+    for(int i = 0 ; i < len ; i++ ){
+        if(c == abc[i]){
+         toreturn = 0;
+    }
+}
+return toreturn;
+}
 
+int flow(char c){
+    int len = sizeof(abc);
+    char toreturn = 0;
+    for(int i = 0 ; i < len ; i++ ){
+        if(c == abc[i]){
+         toreturn++;
+    }
+}
+return toreturn;
+}
+
+void Q1(char word[WORD], char text[TXT]){
     int temp = 0;
     for(int a =0;word[a] != '\0';a++){
         int num = 0;
         int i = 0;
         int flag = 0;
+        int b = findin(word[a]);
         while(i < 26 && flag == 0){
             if(word[a]  == abc[i]){
                 num = i + 1;
                 flag = 1;
+                b = 1;
             }
             else if(word[a]  == (abc[i] - 32)){
                 num = i + 1;
                 flag = 1;
+                b = 1;
             }
             i++;
         }
@@ -100,32 +123,43 @@ void Q1(char word[WORD], char text[TXT])
     }
     int s = temp;
     int live = 0;
-    for (int k = 0;text[k] != '\0';k++)
-    {
+    for (int k = 0;text[k] != '\0';k++){
         int temp = 0;
         int m = k;
-        if ((text[k] >= 97 && text[k] <= 122) || (text[k] >= 65 && text[k] <= 90))
-        {
-            while (text[m] != '\0' && temp < s)
-            {
-                if (text[m] >= 97 && text[m] <= 122)
-                {
+        if ((text[k] >= 97 && text[k] <= 122)){
+            while (temp < s && text[m] != '\0' ){
+                int check = flow(text[k]);
+                if (text[m] >= 97 && text[m] <= 122 && check >= 0){
                     temp = temp + text[m] - 97 + 1;
                 }
-                else if (text[m] >= 65 && text[m] <= 90)
-                {
+                else if (text[m] >= 65 && text[m] <= 90 && check >= 0){
                     temp = temp + text[m] - 65 + 1;
                 }
                 ++m;
             }
             --m;
-            if (temp == s)
-            {
+            if (temp == s){
                 p(live,m,k,text);
                 ++live;
             }
         }
-
+        else if(text[k] >= 65 && text[k] <= 90){
+            while (temp < s && text[m] != '\0'){
+                int check1 = flow(text[k]);
+                if (text[m] >= 97 && text[m] <= 122 && check1 >= 0){
+                    temp = temp + text[m] - 97 + 1;
+                }
+                else if (text[m] >= 65 && text[m] <= 90 && check1 >= 0){
+                    temp = temp + text[m] - 65 + 1;
+                }
+                ++m;
+            }
+            --m;
+            if (temp == s){
+                p(live,m,k,text);
+                ++live;
+            }
+        }
     }
 }
 
