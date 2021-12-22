@@ -1,15 +1,8 @@
-CC=gcc
-FLAGS = -Wall -g
-
+.PHONY = all clean
 all: stringProg
-
-stringProg: main.o 
-	$(CC) $(FLAGS) -o stringProg main.o
-
-main.o: main.c 
-	$(CC) $(FLAGS) -c main.c
-
-.PHONY: clean all
-
+FLAGS = -Wall -Werror -g
+CC = gcc
+stringProg: hw3.c
+	$(CC) $(FLAGS) hw3.c -o stringProg
 clean:
-	rm -f *.o *.a *.so stringProg
+	rm -f *.o *.a stringProg
