@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -13,17 +12,16 @@ char c[WORD];
 char a[WORD];
 char b[WORD];
 char d[WORD];
-const int abc[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
+const int alpha[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
                      's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
-
-const int abd[26] = {'z', 'y', 'x', 'w', 'v', 'u', 't', 's', 'r', 'q', 'p', 'o', 'n', 'm', 'l', 'k', 'j', 'i',
+const int alphau[26] = {'z', 'y', 'x', 'w', 'v', 'u', 't', 's', 'r', 'q', 'p', 'o', 'n', 'm', 'l', 'k', 'j', 'i',
                      'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a'};
 
 int ab(char c){
     for(int i=0;i<26;i++){
-        if(c==abc[i]){
-            return abd[i];
+        if(c==alpha[i]){
+            return alphau[i];
         }
     }
 
@@ -54,18 +52,6 @@ void w(char ver[WORD],char str[TXT]){
     str[temp] = '\0';
 }
 
-int gematria(char c){
-    for(int i = 0 ; i < 26; i++){
-        if(c == abc[i] || c == abc[i] - 32){
-            return i + 1;
-        }
-    }
-    return 0;
-}
-
-
-
-
 
 void p(int live, int a,int b,char str[TXT]){
     if (live)
@@ -81,10 +67,10 @@ void p(int live, int a,int b,char str[TXT]){
 }
 
 int findin(char c){
-    int len = sizeof(abc);
+    int len = sizeof(alpha);
     char toreturn = 1;
     for(int i = 0 ; i < len ; i++ ){
-        if(c == abc[i]){
+        if(c == alpha[i]){
             toreturn = 0;
         }
     }
@@ -92,10 +78,10 @@ int findin(char c){
 }
 
 int flow(char c){
-    int len = sizeof(abc);
+    int len = sizeof(alpha);
     char toreturn = 0;
     for(int i = 0 ; i < len ; i++ ){
-        if(c == abc[i]){
+        if(c == alpha[i]){
             toreturn++;
         }
     }
@@ -115,12 +101,12 @@ void Q1(char ver[WORD], char str[TXT]){
             b++;
         }
         while(i < 26 && flag == 0){
-            if(ver[a]  == abc[i]){
+            if(ver[a]  == alpha[i]){
                 num = i + 1;
                 flag = 1;
                 b = 1;
             }
-            else if(ver[a]  == (abc[i] - 32)){
+            else if(ver[a]  == (alpha[i] - 32)){
                 num = i + 1;
                 flag = 1;
                 b = 1;
@@ -236,7 +222,7 @@ void q(int on,int over,int p,int g,char str[WORD],int s){
 int count(char ver[WORD]){
     char toreturn = 0;
     for(int i = 0 ; i < WORD ; i++ ){
-        if(ver[i] == abc[i]){
+        if(ver[i] == alpha[i]){
             toreturn++;
         }
     }
@@ -322,7 +308,7 @@ int plz(char arr[WORD]){
 
 
 void Q3(char ver[WORD], char str[TXT]){
-    /*char abc[2][26] = {{'a','b','c','d','e','f','g','j','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'},{'z','y','x','w','v','u','t','s','r','q','p','o','n','m','l','k','j','i','h','g','f','e','d','c','b','a'}};
+    /*char alpha[2][26] = {{'a','b','c','d','e','f','g','j','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'},{'z','y','x','w','v','u','t','s','r','q','p','o','n','m','l','k','j','i','h','g','f','e','d','c','b','a'}};
     */
     int b = 1;
     int r = 0;
@@ -348,14 +334,14 @@ void Q3(char ver[WORD], char str[TXT]){
             for(int i;i<1;i++){
                 cou++;
                 /*
-                while( cc != abc[0][j] && j <= 25 ){
+                while( cc != alpha[0][j] && j <= 25 ){
             j++;
         }
         if(flag == 0 ){
-            toreturn = abc[1][j];
+            toreturn = alpha[1][j];
         }
         else{
-            toreturn = abc[1][j];
+            toreturn = alpha[1][j];
             toreturn -= 32;
         }
 }
