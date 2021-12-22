@@ -28,7 +28,7 @@ int ab(char c){
 
     return -1;
 
-    
+
 }
 
 
@@ -43,7 +43,7 @@ void w(char word[WORD],char text[TXT]){
     }
     word[temp] = '\0';
     temp =0;
-     while(temp < TXT && data != '~'){
+    while(temp < TXT && data != '~'){
         text[temp] = data;
         temp++;
         scanf("%c", &data);
@@ -60,53 +60,61 @@ int gematria(char c){
     return 0;
 }
 
-void p(int isPrint, int j,int i,char text[TXT]){
-    if (isPrint)
+
+
+
+void p(int live, int a,int b,char text[TXT]){
+    if (live)
     {
         printf("~");
     }
-    int k = i;
-    while (k <= j)
+    int k = b;
+    while (k <= a)
     {
         printf("%c", text[k]);
         k++;
     }
 }
 
-void gematriaSequences(char word[WORD],char text[TXT])
+void Q1(char word[WORD], char text[TXT])
 {
-    int sum = 0;
+    
+    int temp = 0;
     //past
-    for(int i =0;word[i] != '\0';i++){
-        sum = sum + gematria(word[i]);
+    for(int a =0;word[a] != '\0';a++){
+        temp = temp + gematria(word[a]);
     }
+    
+    
     //int need = sum;
-    int wordGematria = sum;
-    int isPrint = 0;
+    int s = temp;
+    int live = 0;
     //passed
-    for (int i = 0;text[i] != '\0';i++)
+    
+    for (int k = 0;text[k] != '\0';k++)
     {
-        int sum = 0;
-        int j = i;
-        if ((text[i] >= 97 && text[i] <= 122) || (text[i] >= 65 && text[i] <= 90))
+        
+        int temp = 0;
+        int m = k;
+        if ((text[k] >= 97 && text[k] <= 122) || (text[k] >= 65 && text[k] <= 90))
         {
-            while (text[j] != '\0' && sum < wordGematria)
+            while (text[m] != '\0' && temp < s)
             {
-                if (text[j] >= 97 && text[j] <= 122)
+                if (text[m] >= 97 && text[m] <= 122)
                 {
-                    sum += text[j] - 97 + 1;
+                    temp = temp + text[m] - 97 + 1;
                 }
-                else if (text[j] >= 65 && text[j] <= 90)
+                else if (text[m] >= 65 && text[m] <= 90)
                 {
-                    sum += text[j] - 65 + 1;
+                    temp = temp + text[m] - 65 + 1;
                 }
-                ++j;
+                ++m;
             }
-            --j;
-            if (sum == wordGematria)
+            --m;
+            if (temp == s)
             {
-                p(isPrint,j,i,text);
-                ++isPrint;
+                p(live,m,k,text);
+                ++live;
             }
         }
 
@@ -339,9 +347,9 @@ int main(){
     char word[WORD];
     char text[TXT];
     w(word,text);
-  //  t(text);
+    //  t(text);
     printf("Gematria Sequences: ");
-    gematriaSequences(word,text);
+    Q1(word,text);
     printf("\n");
     printf("Atbash Sequences: ");
     AtbashSequences(word, text);
