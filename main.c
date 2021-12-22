@@ -275,12 +275,12 @@ void Q2(char word[WORD], char text[TXT]){
 
 }
 int plz(char arr[WORD]){
-    for(int i = 0; arr[i] != '\0'; i++){
-        if(arr[i] != -1)return 0;
+    for(int h = 0; arr[h] != '\0'; h++){
+        if(arr[h] != -1){return 0;}
     }
     return 1;
 }
-void AnagramSequences(char word[WORD], char text[TXT]){
+void Q3(char word[WORD], char text[TXT]){
     int b = 1;
     int r = 0;
     //passed
@@ -342,7 +342,7 @@ int main(){
     printf("Atbash Sequences: ");
     Q2(word, text);
     printf("Anagram Sequences: ");
-    AnagramSequences(word, text);
+    Q3(word, text);
 
     return 0;
 }
