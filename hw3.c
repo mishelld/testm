@@ -312,7 +312,6 @@ void Q2(char ver[WORD], char str[TXT]){
     uno(a, d);
     int s = 1;
     h(ver,str,s);
-    printf("\n");
 }
 int plz(char arr[WORD]){
     for(int h = 0; arr[h] != '\0'; h++){
@@ -544,6 +543,7 @@ int main(){
     printf("\n");
     printf("Atbash Sequences: ");
     Q2(ver, str);
+    printf("\n");
     printf("Anagram Sequences: ");
     Q3(ver, str);
 
