@@ -1,5 +1,4 @@
 
-
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -241,80 +240,81 @@ void Q2(char word[WORD], char text[TXT]){
     printf("\n");
 
 }
-int isEmpty(char arr[WORD]){
-    for(int i = 0; arr[i] != '\0'; i++){
-        if(arr[i] != -1)return 0;
+int sec(char arr[WORD]){
+    for(int x = 0; arr[x] != '\0'; x++){
+        if(arr[x] != -1)return 0;
     }
     return 1;
 }
-void Q3(char ver[WORD], char str[TXT]){
-    int s = 1;
-    int q = 0;
+void AnagramSequences(char word[WORD], char text[TXT]){
+    int firstPrint = 1;
+    int i = 0;
     //passed
-    while(ver[q] != '\0'){
-        if(ver[q] != ' '){
-            int f0 = 1;
+    while(text[i] != '\0'){
+        if(text[i] != ' '){
+            int keep = 1;
             //past
-            strcpy(c, ver);
-            for(int m = q; f0 && ver[m] != '\0' ; m++){
-                if(ver[m] != ' '){
+            strcpy(c, word);
+            for(int j = i; keep && text[j] != '\0' ; j++){
+                if(text[j] != ' '){
                     //past
                     int k = -1;
-                    int x = 0;
+                    int f = 0;
                     //passed
-                    while(c[x] != '\0'){
-                        if(c[x] == ver[m]){
-                            k=x;
+                    while(c[f] != '\0'){
+                        if(c[f] == text[j]){
+                            k=f;
                         }
-                        x++;
+                        f++;
                     }
                     if(k != -1){
                         c[k] = -1;
                     }
                     else{
-                        f0 = 0;
+                        keep = 0;
                     }
                 }
-                if(isEmpty(c)){
-                    if(!s){
+                if(sec(c)){
+                    if(!firstPrint){
                         printf("~");
                     }
                     else{
-                        s = 0;
+                        firstPrint = 0;
                     }
-                
                     // passed
-                    int b = q;
-                    while(b <= m){
-                        printf("%c", ver[b]);
+                    int g = i;
+                    while(g <= j){
+                        printf("%c", text[g]);
 
-                        b++;
+                        g++;
                     }
-                    f0 = 0;
+                    keep = 0;
                 }
             }
         }
-        q++;
+        i++;
     }
 }
 
-void o(char ver[WORD], char str[TXT]){
-    int s = 1;
-    int t = 0;
+
+
+void o(char word[WORD], char text[TXT]){
+    int firstPrint = 1;
+    int i = 0;
     //passed
-    while(str[t] != '\0'){
-        if(str[t] != ' '){
-            int f0 = 1;
+    while(text[i] != '\0'){
+        if(text[i] != ' '){
+            int keep = 1;
             //past
-            ash(ver);
-            for(int d = t; f0 && str[d] != '\0' ; d++){
-                if(str[d] != ' '){
+            ash(word);
+            for(int j = i; keep && text[j] != '\0' ; j++){
+                if(text[j] != ' '){
                     //past
                     int k = -1;
                     int f = 0;
                     //passed
                     while(a[f] != '\0'){
-                        if(a[f] == str[d]){
+                        if(a[f] == text[j]){
                             k=f;
                         }
                         f++;
@@ -323,28 +323,28 @@ void o(char ver[WORD], char str[TXT]){
                         a[k] = -1;
                     }
                     else{
-                        f0 = 0;
+                        keep = 0;
                     }
                 }
-                if(isEmpty(a)){
-                    if(!s){
+                if(sec(a)){
+                    if(!firstPrint){
                         printf("~");
                     }
                     else{
-                        s = 0;
+                        firstPrint = 0;
                     }
                     // passed
-                    int g = t;
-                    while(g <= d){
-                        printf("%c",str[g]);
+                    int g = i;
+                    while(g <= j){
+                        printf("%c",text[g]);
 
                         g++;
                     }
-                    f0 = 0;
+                    keep = 0;
                 }
             }
         }
-        t++;
+        i++;
     }
 
 }
@@ -363,7 +363,7 @@ int main(){
     printf("Atbash Sequences: ");
     Q2(word, text);
     printf("Anagram Sequences: ");
-    Q3(word, text);
+    AnagramSequences(word, text);
 
     return 0;
 }
